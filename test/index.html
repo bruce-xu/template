@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="Javascript template">
+        <title>JS模板引擎</title>
+        <style type="text/css">
+            .container {
+                padding: 10px;
+                border: 1px solid #ccc;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container" id="container"></div>
+        <script src="../src/index.js"></script>
+        <script>
+            var data = {
+                hello: 'Hello',
+                world: 'World!',
+                a: {
+                    a1: {
+                        a2: 'a22'
+                    }
+                },
+                b: [
+                    {b1: [1, 2, 3]}
+                ]
+            };
+            var template = '<div>This is a test: \"<span><%= hello %></span> - <span><%= world %></span>\"</div>\r\n<div>A: <%= a.a1.a2 %></div><div>B: <%= b[0].b1[2] %></div>';
+            var engine = new Template(template);
+            var html = engine.render(data);
+            document.getElementById('container').innerHTML = html;
+        </script>
+    </body>
+</html>
